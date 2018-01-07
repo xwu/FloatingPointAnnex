@@ -105,30 +105,34 @@ class FloatingPointAnnexTests: XCTestCase {
     XCTAssert(Float._convert(from: Double.nan).value.isNaN)
     XCTAssert(!Double._convert(from: Float.nan).value.isSignalingNaN)
     XCTAssert(!Float._convert(from: Double.nan).value.isSignalingNaN)
-    XCTAssert(Double._convert(from: Float.signalingNaN).value.isSignalingNaN)
-    XCTAssert(Float._convert(from: Double.signalingNaN).value.isSignalingNaN)
+    XCTAssert(Double._convert(from: Float.signalingNaN).value.isNaN)
+    XCTAssert(Float._convert(from: Double.signalingNaN).value.isNaN)
 
-    var x = Float(bitPattern: Float.nan.bitPattern | 0xf)
+    let x = Float(bitPattern: Float.nan.bitPattern | 0xf)
     XCTAssert(
       Float._convert(from: Double._convert(from: x).value).value.bitPattern ==
         x.bitPattern)
-    x = Float(bitPattern: Float.signalingNaN.bitPattern | 0xf)
+    let a = Float(bitPattern: Float.signalingNaN.bitPattern | 0xf)
     XCTAssert(
-      Float._convert(from: Double._convert(from: x).value).value.bitPattern ==
-        x.bitPattern)
+      Float._convert(from: Double._convert(from: a).value).value.bitPattern ==
+        a.bitPattern ||
+        Float._convert(from: Double._convert(from: a).value).value.bitPattern ==
+          x.bitPattern)
     var y = Double(bitPattern: Double.nan.bitPattern | 0xf)
     XCTAssert(
       Double._convert(from: Float._convert(from: y).value).value.bitPattern ==
         y.bitPattern)
-    y = Double(bitPattern: Double.signalingNaN.bitPattern | 0xf)
+    let b = Double(bitPattern: Double.signalingNaN.bitPattern | 0xf)
     XCTAssert(
-      Double._convert(from: Float._convert(from: y).value).value.bitPattern ==
-        y.bitPattern)
-    y = Double(bitPattern: Double.signalingNaN.bitPattern | (1 << 32 - 1))
+      Double._convert(from: Float._convert(from: b).value).value.bitPattern ==
+        b.bitPattern ||
+        Double._convert(from: Float._convert(from: b).value).value.bitPattern ==
+          y.bitPattern)
+    y = Double(bitPattern: Double.nan.bitPattern | (1 << 32 - 1))
     XCTAssert(
       Double._convert(from: Float._convert(from: y).value).value.bitPattern !=
         y.bitPattern)
-    XCTAssert(Float._convert(from: y).value.isSignalingNaN)
+    XCTAssert(Float._convert(from: y).value.isNaN)
     XCTAssertFalse(Float._convert(from: y).exact)
 
     XCTAssert(
@@ -212,30 +216,34 @@ class FloatingPointAnnexTests: XCTestCase {
     XCTAssertTrue(Float._convert(from: Double.nan).value.isNaN)
     XCTAssertFalse(Double._convert(from: Float.nan).value.isSignalingNaN)
     XCTAssertFalse(Float._convert(from: Double.nan).value.isSignalingNaN)
-    XCTAssertTrue(Double._convert(from: Float.signalingNaN).value.isSignalingNaN)
-    XCTAssertTrue(Float._convert(from: Double.signalingNaN).value.isSignalingNaN)
+    XCTAssertTrue(Double._convert(from: Float.signalingNaN).value.isNaN)
+    XCTAssertTrue(Float._convert(from: Double.signalingNaN).value.isNaN)
 
-    var x = Float(bitPattern: Float.nan.bitPattern | 0xf)
+    let x = Float(bitPattern: Float.nan.bitPattern | 0xf)
     XCTAssertEqual(
       Float._convert(from: Double._convert(from: x).value).value.bitPattern,
       x.bitPattern)
-    x = Float(bitPattern: Float.signalingNaN.bitPattern | 0xf)
-    XCTAssertEqual(
-      Float._convert(from: Double._convert(from: x).value).value.bitPattern,
-      x.bitPattern)
+    let a = Float(bitPattern: Float.signalingNaN.bitPattern | 0xf)
+    XCTAssertTrue(
+      Float._convert(from: Double._convert(from: a).value).value.bitPattern ==
+        a.bitPattern ||
+        Float._convert(from: Double._convert(from: a).value).value.bitPattern ==
+          x.bitPattern)
     var y = Double(bitPattern: Double.nan.bitPattern | 0xf)
     XCTAssertEqual(
       Double._convert(from: Float._convert(from: y).value).value.bitPattern,
       y.bitPattern)
-    y = Double(bitPattern: Double.signalingNaN.bitPattern | 0xf)
-    XCTAssertEqual(
-      Double._convert(from: Float._convert(from: y).value).value.bitPattern,
-      y.bitPattern)
-    y = Double(bitPattern: Double.signalingNaN.bitPattern | (1 << 32 - 1))
+    let b = Double(bitPattern: Double.signalingNaN.bitPattern | 0xf)
+    XCTAssertTrue(
+      Double._convert(from: Float._convert(from: b).value).value.bitPattern ==
+        b.bitPattern ||
+        Double._convert(from: Float._convert(from: b).value).value.bitPattern ==
+          y.bitPattern)
+    y = Double(bitPattern: Double.nan.bitPattern | (1 << 32 - 1))
     XCTAssertNotEqual(
       Double._convert(from: Float._convert(from: y).value).value.bitPattern,
       y.bitPattern)
-    XCTAssertTrue(Float._convert(from: y).value.isSignalingNaN)
+    XCTAssertTrue(Float._convert(from: y).value.isNaN)
     XCTAssertFalse(Float._convert(from: y).exact)
 
     XCTAssertTrue(
