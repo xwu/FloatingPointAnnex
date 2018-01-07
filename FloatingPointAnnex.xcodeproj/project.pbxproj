@@ -10,6 +10,8 @@
 		859B0D7E20015654007BBEEA /* FloatingPointAnnex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 859B0D7420015654007BBEEA /* FloatingPointAnnex.framework */; };
 		859B0D8320015654007BBEEA /* FloatingPointAnnexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859B0D8220015654007BBEEA /* FloatingPointAnnexTests.swift */; };
 		859B0D8520015654007BBEEA /* FloatingPointAnnex.h in Headers */ = {isa = PBXBuildFile; fileRef = 859B0D7720015654007BBEEA /* FloatingPointAnnex.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		859B0D8F20015684007BBEEA /* BinaryInteger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859B0D8E20015684007BBEEA /* BinaryInteger.swift */; };
+		859B0D9120015785007BBEEA /* BinaryFloatingPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859B0D9020015785007BBEEA /* BinaryFloatingPoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		859B0D7D20015654007BBEEA /* FloatingPointAnnexTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FloatingPointAnnexTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		859B0D8220015654007BBEEA /* FloatingPointAnnexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPointAnnexTests.swift; sourceTree = "<group>"; };
 		859B0D8420015654007BBEEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		859B0D8E20015684007BBEEA /* BinaryInteger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryInteger.swift; sourceTree = "<group>"; };
+		859B0D9020015785007BBEEA /* BinaryFloatingPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryFloatingPoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				859B0D7720015654007BBEEA /* FloatingPointAnnex.h */,
+				859B0D8E20015684007BBEEA /* BinaryInteger.swift */,
+				859B0D9020015785007BBEEA /* BinaryFloatingPoint.swift */,
 				859B0D7820015654007BBEEA /* Info.plist */,
 			);
 			path = FloatingPointAnnex;
@@ -148,6 +154,7 @@
 				TargetAttributes = {
 					859B0D7320015654007BBEEA = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					859B0D7C20015654007BBEEA = {
@@ -196,6 +203,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				859B0D9120015785007BBEEA /* BinaryFloatingPoint.swift in Sources */,
+				859B0D8F20015684007BBEEA /* BinaryInteger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +342,7 @@
 		859B0D8920015654007BBEEA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -348,6 +358,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ca.diploid.FloatingPointAnnex;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -355,6 +366,7 @@
 		859B0D8A20015654007BBEEA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -377,6 +389,7 @@
 		859B0D8C20015654007BBEEA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = FRC6CVKX9G;
@@ -391,6 +404,7 @@
 		859B0D8D20015654007BBEEA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = FRC6CVKX9G;

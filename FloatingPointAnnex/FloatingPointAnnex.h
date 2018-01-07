@@ -14,6 +14,5 @@ FOUNDATION_EXPORT double FloatingPointAnnexVersionNumber;
 //! Project version string for FloatingPointAnnex.
 FOUNDATION_EXPORT const unsigned char FloatingPointAnnexVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <FloatingPointAnnex/PublicHeader.h>
-
-
+// In this header, you should import all the public headers of your framework
+// using statements like #import <FloatingPointAnnex/PublicHeader.h>
