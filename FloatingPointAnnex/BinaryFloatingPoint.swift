@@ -7,10 +7,12 @@
 //
 
 extension BinaryFloatingPoint {
+  @_inlineable
+  @inline(__always)
   public // @testable
   static func _convert<Source : BinaryInteger> (
     from source: Source
-  ) -> (value: Self, exact: Bool) {
+  ) -> (value: Self, exact: Bool) where Source.Magnitude : BinaryInteger {
     guard _fastPath(source != 0) else { return (0, true) }
 
     let magnitude = source.magnitude
@@ -61,17 +63,19 @@ extension BinaryFloatingPoint {
   }
 
   @_inlineable // FIXME(sil-serialize-all)
-  public init<Source : BinaryInteger>(_ value: Source) {
+  public init<Source : BinaryInteger>(_ value: Source) where Source.Magnitude : BinaryInteger {
     self = Self._convert(from: value).value
   }
 
   @_inlineable // FIXME(sil-serialize-all)
-  public init?<Source : BinaryInteger>(exactly value: Source) {
+  public init?<Source : BinaryInteger>(exactly value: Source) where Source.Magnitude : BinaryInteger {
     let (value_, exact) = Self._convert(from: value)
     guard exact else { return nil }
     self = value_
   }
 
+  @_inlineable
+  @inline(__always)
   public // @testable
   static func _convert<Source : BinaryFloatingPoint>(
     from source: Source

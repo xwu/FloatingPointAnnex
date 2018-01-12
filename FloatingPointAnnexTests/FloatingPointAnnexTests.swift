@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import FloatingPointAnnex
+import FloatingPointAnnex
 
 class FloatingPointAnnexTests: XCTestCase {
   override func setUp() {
@@ -309,21 +309,23 @@ class FloatingPointAnnexTests: XCTestCase {
   }
 
   func testPerformanceGenericConversionFromInt() {
+    var x = [Double]()
     self.measure {
-      var x = [Double]()
       for i in 0..<1000 {
         x.append(Double._convert(from: i).value)
       }
     }
+    print(x[Int(arc4random_uniform(999))])
   }
 
   func testPerformanceConcreteConversionFromInt() {
+    var x = [Double]()
     self.measure {
-      var x = [Double]()
       for i in 0..<1000 {
         x.append(Double(i))
       }
     }
+    print(x[Int(arc4random_uniform(999))])
   }
 
   func testPerformanceGenericConversionFromFloat() {
@@ -333,7 +335,7 @@ class FloatingPointAnnexTests: XCTestCase {
         x.append(Double._convert(from: Float(i)).value)
       }
     }
-    print(x[999])
+    print(x[Int(arc4random_uniform(999))])
   }
 
   func testPerformanceConcreteConversionFromFloat() {
@@ -343,6 +345,6 @@ class FloatingPointAnnexTests: XCTestCase {
         x.append(Double(Float(i)))
       }
     }
-    print(x[999])
+    print(x[Int(arc4random_uniform(999))])
   }
 }
